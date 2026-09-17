@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>[##_page_title_##]</title>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="[##_rss_url_##]">
+  <link rel="stylesheet" href="./style.css">
+  <script>try{var t=localStorage.getItem('record-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+  <script defer src="./images/config.js"></script>
+  <script defer src="./images/script.js"></script>
+</head>
+<body id="[##_body_id_##]">
+<s_t3>
+  <a class="skip" href="#main">본문으로 이동</a>
+  <div class="top-progress" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="[##_blog_link_##]">[##_title_##]</a>
+    <nav class="top-nav" aria-label="주요 메뉴">
+      <a href="[##_blog_link_##]">글</a><a href="[##_blog_link_##]#series">시리즈</a><a href="[##_taglog_link_##]">태그</a>
+      <s_if_var_about-url><a href="[##_var_about-url_##]">소개</a></s_if_var_about-url>
+    </nav>
+    <div class="breadcrumb" hidden></div>
+    <div class="top-actions">
+      <button type="button" data-search-open aria-label="검색 열기">검색 <kbd>⌘K</kbd></button>
+      <button type="button" data-theme-toggle aria-label="라이트 모드로 전환">☾</button>
+      <button type="button" class="mobile-menu" aria-controls="left-rail" aria-expanded="false">메뉴</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="rail" id="left-rail" aria-label="시리즈와 카테고리">
+      <nav class="rail-mobile-links" aria-label="모바일 보조 메뉴"><a href="[##_taglog_link_##]">태그</a><a href="[##_guestbook_link_##]">방명록</a><s_if_var_about-url><a href="[##_var_about-url_##]">소개</a></s_if_var_about-url></nav>
+      <section class="rail-series"><h2 class="eyebrow">SERIES</h2><div data-series-nav></div><p class="muted no-series" hidden>아직 등록한 시리즈가 없습니다.</p></section>
+      <s_sidebar>
+        <s_sidebar_element>
+          <!-- 카테고리 -->
+          <section class="rail-category"><h2 class="eyebrow">CATEGORY</h2>[##_category_list_##]</section>
+        </s_sidebar_element>
+      </s_sidebar>
+      <a class="resume" data-resume hidden><span>읽던 곳으로 돌아가기</span><small data-resume-title></small><progress max="100" value="0" aria-label="저장된 읽기 진행률"></progress></a>
+    </aside>
+    <main id="main">
+      <section class="home-intro">
+        <s_if_var_current-note><span class="status-pill"><span aria-hidden="true">●</span> [##_var_current-note_##]</span></s_if_var_current-note>
+        <h1>[##_var_hero-title_##]</h1>
+        <p>[##_desc_##]</p>
+        <div class="stats"><span data-total-posts hidden><b></b> posts</span><span><b data-series-count>0</b> series</span><span><b class="green">[##_count_today_##]</b> today</span></div>
+      </section>
+      <section class="series-section" id="series">
+        <div class="section-line"><h2>이어 읽는 시리즈</h2><button type="button" data-series-all hidden>ALL →</button></div>
+        <div class="series-grid" data-series-grid></div>
+        <p class="empty" data-series-empty hidden>시리즈를 등록하면 이곳에서 이어 읽을 수 있습니다.</p>
+      </section>
+      [##_revenue_list_upper_##]
+      <s_list>
+        <section class="listing" data-current-category="[##_list_conform_##]">
+          <header class="category-header"><p class="eyebrow">CATEGORY</p><h1>[##_list_conform_##]</h1><p>[##_list_description_##]</p><span class="result-count">[##_list_count_##]개의 글</span></header>
+          <div class="section-line list-toolbar"><h2 class="home-list-title">최근 글</h2><nav class="category-filters" aria-label="카테고리 필터"></nav><div class="sort-controls" role="group" aria-label="정렬"><button type="button" data-sort="latest" aria-pressed="true">최신순</button><button type="button" data-sort="popular" aria-pressed="false">인기순</button></div></div>
+          <div class="post-list" data-latest-list>
+            <s_list_rep><article class="post-row" data-category="[##_list_rep_category_##]">
+              <time>[##_list_rep_regdate_##]</time><div class="post-copy"><div class="post-title-line"><a class="post-link" href="[##_list_rep_link_##]">[##_list_rep_title_##]</a><span class="post-badge" data-post-badge hidden></span></div><p>[##_list_rep_summary_##]</p></div><span class="read-time" data-read-time></span>
+            </article></s_list_rep>
+            <s_list_empty><p class="empty">해당하는 글이 없습니다.</p></s_list_empty>
+          </div>
+          <div class="post-list" data-popular-list hidden></div><p class="popular-info muted" hidden>티스토리에서 제공한 블로그 인기글 중 해당 카테고리의 글입니다.</p>
+        </section>
+      </s_list>
+      <s_article_rep>
+        <s_index_article_rep><article class="post-row index-fallback" data-category="[##_article_rep_category_##]"><time>[##_article_rep_simple_date_##]</time><div class="post-copy"><div class="post-title-line"><a class="post-link" href="[##_article_rep_link_##]">[##_article_rep_title_##]</a><span class="post-badge" data-post-badge hidden></span></div><p>[##_article_rep_summary_##]</p></div><span class="read-time" data-read-time></span></article></s_index_article_rep>
+        <s_permalink_article_rep>
+          <article class="entry" data-post-url="[##_article_rep_link_##]" data-post-category="[##_article_rep_category_##]">
+            <header class="entry-header"><div class="entry-meta"><a class="post-badge" href="[##_article_rep_category_link_##]">[##_article_rep_category_##]</a><span data-series-position hidden></span><time>[##_article_rep_simple_date_##]</time><span data-entry-time></span></div><h1>[##_article_rep_title_##]</h1></header>
+            <div class="article-body">[##_article_rep_desc_##]</div>
+            <s_tag_label><div class="entry-tags">[##_tag_label_rep_##]</div></s_tag_label>
+            <nav class="post-neighbors" aria-label="이전 다음 글"><s_article_prev><a data-prev href="[##_article_prev_link_##]"><small>← 이전 글</small><span>[##_article_prev_title_##]</span></a></s_article_prev><s_article_next><a data-next href="[##_article_next_link_##]"><small>다음 글 →</small><span>[##_article_next_title_##]</span></a></s_article_next></nav>
+            <section class="comments" aria-label="댓글">[##_comment_group_##]</section>
+          </article>
+        </s_permalink_article_rep>
+      </s_article_rep>
+      <s_notice_rep><s_index_article_rep><article class="post-row"><time>[##_notice_rep_simple_date_##]</time><div class="post-copy"><a class="post-link" href="[##_notice_rep_link_##]">[##_notice_rep_title_##]</a><p>[##_notice_rep_summary_##]</p></div><span class="post-badge">공지</span></article></s_index_article_rep><s_permalink_article_rep><article class="entry static-entry"><header class="entry-header"><p class="eyebrow">NOTICE</p><h1><a href="[##_notice_rep_link_##]">[##_notice_rep_title_##]</a></h1><time>[##_notice_rep_simple_date_##]</time></header><div class="article-body">[##_notice_rep_desc_##]</div></article></s_permalink_article_rep></s_notice_rep>
+      <s_page_rep><article class="entry static-entry"><header class="entry-header"><h1>[##_article_rep_title_##]</h1></header><div class="article-body">[##_article_rep_desc_##]</div></article></s_page_rep>
+      <s_article_protected><section class="protected"><p class="eyebrow">PROTECTED</p><h1>[##_article_rep_title_##]</h1><p>보호된 글입니다. 비밀번호를 입력해 주세요.</p><label for="[##_article_password_##]">비밀번호</label><input id="[##_article_password_##]" name="[##_article_password_##]" type="password" maxlength="16" onkeydown="if(event.key==='Enter'){[##_article_dissolve_##]}"><button type="button" onclick="[##_article_dissolve_##]">확인</button></section></s_article_protected>
+      <s_tag><section class="tag-page"><p class="eyebrow">TAGS</p><h1>태그 <span data-tag-count></span></h1><p class="muted">글에 사용한 태그를 모았습니다.</p><div class="tag-cloud"><s_tag_rep><a href="[##_tag_link_##]" class="[##_tag_class_##]">#[##_tag_name_##]</a></s_tag_rep></div></section></s_tag>
+      <s_guest><section class="guest-page"><p class="eyebrow">GUESTBOOK</p><h1>방명록</h1>[##_guestbook_group_##]</section></s_guest>
+      <s_paging><nav class="pagination" aria-label="글 목록 페이지"><a [##_prev_page_##] class="[##_no_more_prev_##]" data-page-prev>‹ 이전</a><span><s_paging_rep><a [##_paging_rep_link_##]>[##_paging_rep_link_num_##]</a></s_paging_rep></span><a [##_next_page_##] class="[##_no_more_next_##]" data-page-next>다음 ›</a></nav></s_paging>
+      <div class="load-more-wrap" hidden><button type="button" data-load-more>더 보기</button><span role="status" data-load-status></span></div>
+      [##_revenue_list_lower_##]
+    </main>
+    <aside class="reading-rail" aria-label="본문 목차와 읽기 도구" hidden>
+      <nav class="toc" aria-label="이 글의 목차"><h2 class="eyebrow">ON THIS PAGE</h2><ol></ol></nav>
+      <div class="reading-meter"><div><span>읽기 진행률</span><span data-progress-label>0%</span></div><progress max="100" value="0" aria-label="읽기 진행률"></progress></div>
+      <section class="shortcuts"><h2 class="eyebrow">SHORTCUTS</h2><p>검색 <kbd>⌘K</kbd></p><p>테마 전환 <kbd>T</kbd></p><p>이전 / 다음 글 <kbd>J / K</kbd></p><p>맨 위로 <kbd>G</kbd></p></section>
+    </aside>
+  </div>
+  <footer class="footer"><span>© <span data-year></span> [##_title_##]</span><nav><a href="[##_blog_link_##]">전체 글</a><a href="[##_guestbook_link_##]">방명록</a><a href="[##_rss_url_##]">RSS</a><button type="button" data-top>맨 위로 ↑</button></nav></footer>
+  <dialog id="search-dialog" aria-labelledby="search-title"><div class="search-dialog-head"><h2 id="search-title" class="eyebrow">SEARCH</h2><button type="button" data-search-close aria-label="검색 닫기">ESC</button></div><form class="search-form" role="search"><label class="sr-only" for="search-query">검색어</label><input type="search" id="search-query" name="q" placeholder="검색어를 입력하세요" autocomplete="off"><button type="submit">검색</button></form><p class="search-status muted" role="status"></p><div class="search-results"></div><a class="all-results" hidden>전체 검색 결과 보기 →</a></dialog>
+  <div hidden id="popular-source"><s_sidebar><s_sidebar_element><!-- 인기글 데이터 --><s_rctps_popular_rep><article class="post-row" data-category="[##_rctps_rep_category_##]"><time>[##_rctps_rep_simple_date_##]</time><div class="post-copy"><div class="post-title-line"><a class="post-link" href="[##_rctps_rep_link_##]">[##_rctps_rep_title_##]</a><span class="post-badge">[##_rctps_rep_category_##]</span></div></div><span class="read-time" data-read-time></span></article></s_rctps_popular_rep></s_sidebar_element></s_sidebar></div>
+</s_t3>
+</body>
+</html>
