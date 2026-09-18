@@ -39,6 +39,28 @@
   rail.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
   document.addEventListener('click', e => { if (!e.target.closest('.rail,.mobile-menu')) closeMenu(); });
 
+  function initCategoryTree() {
+    $$('.rail-category li').forEach(item => {
+      const children = item.querySelector(':scope > .sub_category_list');
+      const link = item.querySelector(':scope > a');
+      if (!children || !link) return;
+      item.classList.add('category-branch', 'is-open');
+      const toggle = el('button', '−', 'category-toggle');
+      toggle.type = 'button';
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', link.textContent.trim() + ' 하위 카테고리 접기');
+      toggle.addEventListener('click', () => {
+        const open = item.classList.toggle('is-open');
+        children.hidden = !open;
+        toggle.textContent = open ? '−' : '+';
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', link.textContent.trim() + (open ? ' 하위 카테고리 접기' : ' 하위 카테고리 펼치기'));
+      });
+      item.insertBefore(toggle, link);
+    });
+  }
+  initCategoryTree();
+
   function renderSeries() {
     const nav = $('[data-series-nav]'), grid = $('[data-series-grid]');
     nav.replaceChildren(); grid.replaceChildren();
@@ -157,7 +179,8 @@
           const a = $('.post-link', r), target = a && new URL(a.getAttribute('href'), url.href);
           if (!target || target.origin !== location.origin || links.has(keyFor(target.href))) return;
           // Rebuild from text; never insert scripts or handlers from fetched markup.
-          const row = makeRow({url:target.href,title:a.textContent,date:$('time', r)?.textContent,summary:$('.post-copy p', r)?.textContent,category:r.dataset.category});
+          const thumbnail = $('.post-thumb img', r)?.getAttribute('src');
+          const row = makeRow({url:target.href,title:a.textContent,date:$('time', r)?.textContent,summary:$('.post-copy p', r)?.textContent,category:r.dataset.category,thumbnail:thumbnail ? new URL(thumbnail,url.href).href : ''});
           latest.append(row); links.add(keyFor(target.href)); count++;
         });
         decorate(latest);
@@ -177,7 +200,12 @@
     const badge = el('span', undefined, 'post-badge'); badge.dataset.postBadge = ''; badge.hidden = true;
     title.append(a,badge); copy.append(title,el('p',p.summary || ''));
     const time = el('span', undefined, 'read-time'); time.dataset.readTime = '';
-    row.append(el('time',p.date || ''),copy,time); return row;
+    row.append(el('time',p.date || ''),copy);
+    if (p.thumbnail && safeURL(p.thumbnail)) {
+      const thumb = el('a', undefined, 'post-thumb'); thumb.href = p.url; thumb.tabIndex = -1; thumb.setAttribute('aria-hidden','true');
+      const image = el('img'); image.src = safeURL(p.thumbnail); image.alt = ''; image.loading = 'lazy'; image.decoding = 'async'; thumb.append(image); row.append(thumb);
+    }
+    row.append(time); return row;
   }
 
   // Search uses the real Tistory search route, not a partial client-side index.

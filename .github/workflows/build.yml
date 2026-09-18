@@ -1,0 +1,55 @@
+name: Build skin and deploy preview
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Validate required files
+        run: test -f skin.html && test -f style.css && test -f index.xml && test -f images/script.js && test -f images/config.js
+      - name: Build Tistory skin ZIP
+        run: |
+          mkdir -p dist
+          zip -r dist/record-dev-tistory-skin.zip skin.html style.css index.xml images
+      - name: Upload skin artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: record-dev-tistory-skin
+          path: dist/record-dev-tistory-skin.zip
+      - name: Prepare preview site
+        run: |
+          mkdir -p _site
+          cp index.html style.css _site/
+          cp -r preview _site/preview
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy-preview:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy preview
+        id: deployment
+        uses: actions/deploy-pages@v4
