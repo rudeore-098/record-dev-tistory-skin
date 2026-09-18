@@ -171,7 +171,8 @@ kbd{border-radius:8px}
 .post-thumb{display:block;width:148px;aspect-ratio:16/10;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
 .post-thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .22s ease}
 .post-row:has(.post-thumb){grid-template-columns:84px minmax(0,1fr) 148px;align-items:center}
-#tt-body-index .post-row:has(.post-thumb){grid-template-columns:58px minmax(0,1fr) 148px;align-items:center}
+#tt-body-index .post-row:has(.post-thumb){grid-template-columns:58px minmax(0,1fr) 148px;align-items:start}
+#tt-body-index .post-row:has(.post-thumb) .post-thumb{align-self:start}
 .post-row:hover .post-thumb img,.post-row:focus-within .post-thumb img{transform:scale(1.035)}
 .article-body figure.imageblock,.article-body figure.imagegridblock,.article-body figure.imageslideblock{max-width:100%;margin:34px auto}
 .article-body img{display:block;max-width:100%;height:auto;margin-left:auto;margin-right:auto;border-radius:12px}
@@ -190,7 +191,7 @@ kbd{border-radius:8px}
   #tt-body-index .post-row:has(.post-thumb){grid-template-columns:43px minmax(0,1fr) 92px;gap:15px}
   #tt-body-index .post-row:has(.post-thumb) time{grid-column:1;grid-row:1}
   #tt-body-index .post-row:has(.post-thumb) .post-copy{grid-column:2;grid-row:1/3;min-width:0}
-  #tt-body-index .post-row:has(.post-thumb) .post-thumb{grid-column:3;grid-row:1/3;width:92px;align-self:center}
+  #tt-body-index .post-row:has(.post-thumb) .post-thumb{grid-column:3;grid-row:1/3;width:92px;align-self:start}
   .reading-rail{padding-top:22px}
   .article-body figure.imageblock,.article-body figure.imagegridblock,.article-body figure.imageslideblock{margin:26px auto}
 }
@@ -214,9 +215,9 @@ kbd{border-radius:8px}
   #tt-body-index .layout{width:100%;max-width:none;margin:0;grid-template-columns:264px minmax(0,1fr) 300px;padding:0}
   #tt-body-index .home-intro{padding-left:54px;padding-right:28px}
   #tt-body-index .rail{padding-left:30px;padding-right:28px}
-  body.has-entry:not(#tt-body-index) .layout{width:100%;max-width:none;margin:0;grid-template-columns:minmax(32px,1fr) minmax(0,860px) 300px;gap:22px;padding:0}
+  body.has-entry:not(#tt-body-index) .layout{width:100%;max-width:none;margin:0;grid-template-columns:minmax(32px,1fr) minmax(0,860px) 280px;gap:22px;padding:0}
   body.has-entry:not(#tt-body-index) #main{grid-column:2;width:100%;justify-self:stretch}
-  body.has-entry:not(#tt-body-index) .reading-rail{grid-column:3;width:100%;padding-right:32px}
+  body.has-entry:not(#tt-body-index) .reading-rail{grid-column:3;width:100%;padding-right:12px}
 }
 
 /* Quiet Korean typography for series and small home statistics. */
@@ -237,3 +238,8 @@ html[data-theme=light]{--series-accent:#735b36;--series-soft:#756d61}
 #tt-body-index .series-card progress::-moz-progress-bar{background:var(--series-accent)}
 #tt-body-index [data-series-all]{font-family:inherit;color:var(--series-soft)}
 @media(prefers-reduced-motion:reduce){.post-thumb img{transition:none}}
+
+/* TOC links grow in place without moving the article layout. */
+.toc a{display:block;transform:scale(1);transform-origin:left center;transition:transform .18s ease,color .18s ease}
+.toc a:hover,.toc a:focus-visible{transform:scale(1.045);color:var(--green)}
+@media(prefers-reduced-motion:reduce){.toc a{transition:none}.toc a:hover,.toc a:focus-visible{transform:none}}
