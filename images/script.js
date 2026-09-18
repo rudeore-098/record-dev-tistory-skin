@@ -91,7 +91,7 @@
       const link = el('a', undefined, 'series-nav-link'); link.href = safeURL(s.url) || target;
       link.append(el('span', s.title), el('small', posts.length)); nav.append(link);
       const card = el('a', undefined, 'series-card'); card.href = target; card.dataset.seriesIndex = i;
-      card.append(el('span', 'SERIES ' + String(i + 1).padStart(2, '0'), 'eyebrow'), el('h3', s.title));
+      card.append(el('span', '연재 ' + (i + 1), 'eyebrow'), el('h3', s.title));
       const bar = el('progress'); bar.max = Math.max(posts.length, 1); bar.value = done; bar.setAttribute('aria-label', s.title + ' 읽은 글');
       const label = el('small'); label.append(el('b', String(done)), document.createTextNode(' / ' + posts.length + ' 읽음'));
       card.append(bar, label); card.hidden = i >= 3; grid.append(card);
@@ -100,9 +100,9 @@
   }
   renderSeries();
   $('[data-series-all]').addEventListener('click', e => {
-    const expand = e.currentTarget.textContent.trim() !== '접기 ↑';
+    const expand = e.currentTarget.textContent.trim() !== '접기';
     $$('.series-card').forEach((c, i) => c.hidden = !expand && i >= 3);
-    e.currentTarget.textContent = expand ? '접기 ↑' : 'ALL →';
+    e.currentTarget.textContent = expand ? '접기' : '전체 보기';
   });
   const total = conf.totalPosts ?? Number(($('.rail-category .link_tit .c_cnt')?.textContent || '').replace(/\D/g, '') || NaN);
   if (Number.isFinite(total)) { $('[data-total-posts]').hidden = false; $('[data-total-posts] b').textContent = total; }

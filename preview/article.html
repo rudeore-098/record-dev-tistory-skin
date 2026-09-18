@@ -3,13 +3,15 @@
 <body id="tt-body-page" class="has-entry">
   <header class="topbar"><a class="brand" href="./">기록하는 개발자</a><div class="breadcrumb">개발 기록 / 스킨 제작기</div><div class="top-actions"><a class="preview-link" href="./">홈 화면</a><button type="button" data-theme-toggle>☾</button></div></header>
   <div class="layout"><main id="main"><article class="entry"><header class="entry-header"><div class="entry-meta"><a class="post-badge" href="#">스킨 제작기</a><time>2026. 9. 18.</time></div><h1>티스토리 스킨을 직접 만들며 배운 것들</h1></header><div class="article-body">
-    <p>개발 기록을 오래 쌓아둘 공간이 필요해서 티스토리 스킨을 직접 만들었습니다. 보기 좋은 화면보다 다시 찾기 쉬운 구조를 먼저 고민했습니다.</p>
-    <figure class="imageblock"><img src="./sample-cover.svg" alt="타임라인형 개발 블로그 스킨 예시"><figcaption>타임라인을 중심으로 구성한 홈 화면</figcaption></figure>
-    <h2 id="why">왜 직접 만들었나</h2><p>트러블슈팅, 코드 리뷰, 대회 후기와 회고를 한곳에 쌓으려면 카테고리와 시리즈가 자연스럽게 연결되어야 했습니다.</p>
-    <h2 id="home">홈 화면 구성</h2><p>글은 월별 타임라인으로 배치하고 대표이미지가 있는 글만 썸네일을 보여줍니다. 장식보다 제목과 요약을 먼저 읽을 수 있게 했습니다.</p>
-    <h3 id="tree">카테고리 트리</h3><p>상위 카테고리 아래에 세부 주제를 두고 필요한 가지를 접거나 펼칠 수 있습니다.</p>
-    <h2 id="toc">글 화면과 목차</h2><p>본문 오른쪽에 목차를 밀착 배치해 긴 글에서도 현재 위치를 빠르게 확인할 수 있습니다.</p>
+    <p>개발 기록을 오래 쌓아둘 공간이 필요해서 티스토리 스킨을 직접 만들었습니다. 완성된 디자인부터 정한 것이 아니라 더미 데이터를 채운 화면을 계속 살펴보며 구조와 간격을 다듬었습니다.</p>
+    <figure class="imageblock"><img src="../images/tistory-skin-making-cover.png" alt="Build, Learn, Record 문구와 타임라인으로 구성한 티스토리 스킨 대표 이미지"><figcaption>기록이 쌓이는 흐름을 타임라인으로 표현한 스킨 제작기 대표 이미지</figcaption></figure>
+    <h2 id="why">왜 직접 만들었나</h2><p>트러블슈팅, 코드 리뷰, 대회 후기와 회고처럼 성격이 다른 글을 한곳에 쌓으려면 카테고리와 시리즈가 자연스럽게 연결되어야 했습니다. 그래서 화려한 장식보다 다시 찾기 쉬운 구조를 먼저 목표로 삼았습니다.</p>
+    <h2 id="dummy">더미 데이터로 구조부터 검증하기</h2><p>실제 글이 쌓이기 전에 날짜, 제목, 요약, 태그가 서로 다른 예시 글을 만들었습니다. 긴 제목과 이미지가 없는 글, 모바일 화면까지 미리 확인하니 디자인만 봤을 때 놓치던 문제를 빠르게 찾을 수 있었습니다.</p>
+    <h2 id="home">홈 화면 구성</h2><p>글은 월별 타임라인으로 배치하고 대표 이미지가 있는 글만 썸네일을 보여줍니다. 제목뿐 아니라 둥근 글 블록 전체를 클릭할 수 있게 만들었고, 마우스를 올리면 타임라인의 원과 글 블록이 함께 커지도록 구성했습니다.</p>
+    <h3 id="tree">카테고리 트리</h3><p>상위 카테고리 아래에 세부 주제를 두고 필요한 가지만 접거나 펼칠 수 있습니다. 티스토리가 전달하는 카테고리 목록을 JavaScript로 보강해 트리처럼 동작하게 했습니다.</p>
+    <h2 id="toc">글 화면과 목차</h2><p>본문 오른쪽에는 제목 태그를 기준으로 목차가 자동 생성됩니다. 본문과 목차가 따로 노는 느낌이 들지 않도록 두 영역의 간격도 줄였습니다.</p>
+    <h2 id="learned">만들면서 배운 점</h2><p>티스토리 스킨은 정적인 HTML 템플릿처럼 보이지만 실제 데이터는 치환자가 채웁니다. 브라우저에서 먼저 더미 데이터로 화면을 검증하고, 마지막에 치환자를 연결하는 방식이 디자인과 데이터 문제를 나눠 해결하는 데 도움이 됐습니다.</p>
   </div><div class="entry-tags"><a href="#">#Tistory</a><a href="#">#스킨제작</a></div><nav class="post-neighbors"><a href="#"><small>← 이전 글</small><span>블로그를 시작하며</span></a><a href="#"><small>다음 글 →</small><span>카테고리 설계하기</span></a></nav></article></main>
-  <aside class="reading-rail"><nav class="toc"><h2 class="eyebrow">ON THIS PAGE</h2><ol><li><a href="#why">왜 직접 만들었나</a></li><li><a href="#home">홈 화면 구성</a></li><li class="depth-3"><a href="#tree">카테고리 트리</a></li><li><a href="#toc">글 화면과 목차</a></li></ol></nav><div class="reading-meter"><div><span>읽기 진행률</span><span>36%</span></div><progress max="100" value="36"></progress></div></aside></div>
+  <aside class="reading-rail"><nav class="toc"><h2 class="eyebrow">ON THIS PAGE</h2><ol><li><a href="#why">왜 직접 만들었나</a></li><li><a href="#dummy">더미 데이터로 구조부터 검증하기</a></li><li><a href="#home">홈 화면 구성</a></li><li class="depth-3"><a href="#tree">카테고리 트리</a></li><li><a href="#toc">글 화면과 목차</a></li><li><a href="#learned">만들면서 배운 점</a></li></ol></nav><div class="reading-meter"><div><span>읽기 진행률</span><span>36%</span></div><progress max="100" value="36"></progress></div></aside></div>
   <footer class="footer"><span>© 2026 기록하는 개발자</span><nav><a href="./">홈으로</a></nav></footer>
 </body></html>

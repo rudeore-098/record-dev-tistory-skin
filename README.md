@@ -5,6 +5,7 @@
 ## 미리보기
 
 - 로컬: `preview/index.html`을 브라우저에서 엽니다.
+- 공개 미리보기: [rudeore-098.github.io/record-dev-tistory-skin/preview](https://rudeore-098.github.io/record-dev-tistory-skin/preview/)
 - GitHub Pages: 저장소의 **Settings → Pages → Build and deployment → Source**를 **GitHub Actions**로 설정합니다.
 - `main` 브랜치에 푸시하면 홈·글 화면 미리보기가 자동으로 배포됩니다.
 
