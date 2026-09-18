@@ -2,6 +2,8 @@
 
 개발 기록을 월별 타임라인으로 보여주는 티스토리 스킨입니다. 카테고리 트리, 글 대표이미지, 본문 목차, 다크·라이트 모드와 시리즈 진행률을 지원합니다.
 
+![Record Dev Tistory Skin 제작 커버](images/tistory-skin-making-cover.png)
+
 ## 미리보기
 
 - 로컬: `preview/index.html`을 브라우저에서 엽니다.
@@ -26,5 +28,11 @@ ZIP에는 `skin.html`, `style.css`, `index.xml`, `images/config.js`, `images/scr
 3. ZIP을 푼 뒤 `skin.html`, `style.css`, `index.xml`과 `images` 안의 파일을 등록합니다.
 4. 스킨을 저장하고 적용합니다.
 5. 홈 설정은 **최신 글**, 목록 구성 요소는 **목록만**으로 설정합니다.
+
+## 홈 외부 링크 설정
+
+스킨 편집의 설정 화면에서 **외부 링크** 항목을 열어 GitHub, Instagram, 이메일 링크를 입력할 수 있습니다. 값을 비우면 해당 이모지 아이콘은 자동으로 숨겨집니다. 이메일은 `mailto:name@example.com` 형식으로 입력합니다.
+
+현재 스킨 버전은 `v1.1.0`이며 홈 왼쪽 소개 영역과 `index.xml`에서 확인할 수 있습니다.
 
 티스토리 Open API가 종료되어 GitHub Actions에서 티스토리 스킨으로 직접 배포하는 공식 방법은 없습니다. Actions는 미리보기와 설치 ZIP 생성까지만 담당하며, 최종 등록은 티스토리 관리자에서 진행합니다.

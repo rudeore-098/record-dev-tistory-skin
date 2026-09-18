@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skin>
-  <information><name>기록하는 개발자 — Record Dev</name><version>1.0.0</version><description><![CDATA[다크·그린 개발 기록 스킨. 시리즈, 읽기 진행률, 검색 모달, 코드 탭 및 단축키를 지원합니다.]]></description><license><![CDATA[개인 블로그에서 자유롭게 수정하여 사용하세요.]]></license></information>
+  <information><name>기록하는 개발자 — Record Dev</name><version>1.1.0</version><description><![CDATA[다크·그린 개발 기록 스킨. 시리즈, 읽기 진행률, 검색 모달, 코드 탭 및 단축키를 지원합니다.]]></description><license><![CDATA[개인 블로그에서 자유롭게 수정하여 사용하세요.]]></license></information>
   <author><name>Blog Owner</name><homepage></homepage><email></email></author>
   <default>
     <recentEntries>10</recentEntries><recentComments>5</recentComments><recentTrackbacks>5</recentTrackbacks><itemsOnGuestbook>10</itemsOnGuestbook><tagsInCloud>100</tagsInCloud><sortInCloud>1</sortInCloud><expandComment>1</expandComment><expandTrackback>0</expandTrackback>
@@ -13,6 +13,11 @@
       <variable><name>hero-title</name><label>소개 제목</label><type>STRING</type><option/><default><![CDATA[공부한 걸 찾기 쉽게 쌓아두는 곳]]></default></variable>
       <variable><name>current-note</name><label>지금 하는 공부</label><description>비우면 초록 상태 배지를 숨깁니다.</description><type>STRING</type><option/><default><![CDATA[작은 기록을 꾸준히 쌓는 중]]></default></variable>
       <variable><name>about-url</name><label>소개 페이지 주소</label><description>소개 페이지를 만든 뒤 주소를 입력하세요. 비우면 메뉴를 숨깁니다.</description><type>STRING</type><option/><default/></variable>
+    </variablegroup>
+    <variablegroup name="외부 링크">
+      <variable><name>github-url</name><label>GitHub 주소</label><description>비우면 GitHub 아이콘을 숨깁니다.</description><type>STRING</type><option/><default><![CDATA[https://github.com/rudeore-098]]></default></variable>
+      <variable><name>instagram-url</name><label>Instagram 주소</label><description>비우면 Instagram 아이콘을 숨깁니다.</description><type>STRING</type><option/><default/></variable>
+      <variable><name>email-url</name><label>이메일 링크</label><description>mailto:name@example.com 형식으로 입력하세요. 비우면 이메일 아이콘을 숨깁니다.</description><type>STRING</type><option/><default/></variable>
     </variablegroup>
   </variables>
   <liststyle><item><label>기록 목록</label><value>record-list</value></item></liststyle>
