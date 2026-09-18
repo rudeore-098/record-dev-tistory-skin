@@ -38,6 +38,22 @@
   function closeMenu() { rail.classList.remove('is-open'); menu.setAttribute('aria-expanded', 'false'); }
   rail.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
   document.addEventListener('click', e => { if (!e.target.closest('.rail,.mobile-menu')) closeMenu(); });
+  function openPostRow(row) {
+    const url = safeURL(row.dataset.postUrl);
+    if (url) location.href = url;
+  }
+  document.addEventListener('click', e => {
+    const row = e.target.closest('.post-row[data-post-url]');
+    if (!row || e.target.closest('a,button,input,select,textarea')) return;
+    openPostRow(row);
+  });
+  document.addEventListener('keydown', e => {
+    const row = e.target.closest('.post-row[data-post-url]');
+    if (row && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      openPostRow(row);
+    }
+  });
 
   function initCategoryTree() {
     $$('.rail-category li').forEach(item => {
@@ -194,7 +210,7 @@
     });
   }
   function makeRow(p) {
-    const row = el('article', undefined, 'post-row'); row.dataset.category = p.category || '';
+    const row = el('article', undefined, 'post-row'); row.dataset.category = p.category || ''; row.dataset.postUrl = p.url; row.tabIndex = 0; row.setAttribute('role','link');
     const copy = el('div', undefined, 'post-copy'), title = el('div', undefined, 'post-title-line');
     const a = el('a', p.title, 'post-link'); a.href = p.url;
     const badge = el('span', undefined, 'post-badge'); badge.dataset.postBadge = ''; badge.hidden = true;

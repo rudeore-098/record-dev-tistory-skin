@@ -8,6 +8,10 @@
 - GitHub Pages: 저장소의 **Settings → Pages → Build and deployment → Source**를 **GitHub Actions**로 설정합니다.
 - `main` 브랜치에 푸시하면 홈·글 화면 미리보기가 자동으로 배포됩니다.
 
+Pages를 먼저 활성화하지 않으면 `Get Pages site failed: Not Found` 오류가 발생합니다. 설정을 마친 뒤 **Actions → Build skin and deploy preview → Re-run all jobs**로 실패한 실행을 다시 시작하세요.
+
+워크플로는 Node 24 기반 액션을 사용합니다. Node 20을 다시 허용하는 `ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION` 설정은 추가하지 마세요.
+
 ## 설치 파일 받기
 
 `main` 브랜치에 푸시하면 GitHub Actions의 **Build skin and deploy preview** 작업이 실행됩니다. 완료된 실행의 **Artifacts**에서 `record-dev-tistory-skin`을 내려받을 수 있습니다.

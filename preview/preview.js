@@ -15,4 +15,16 @@
   }));
   const menu = document.querySelector('.mobile-menu');
   if (menu) menu.addEventListener('click', () => document.querySelector('.is-preview-rail')?.classList.toggle('is-open'));
+  document.addEventListener('click', event => {
+    const row = event.target.closest('.post-row[data-post-url]');
+    if (!row || event.target.closest('a,button,input,select,textarea')) return;
+    location.href = row.dataset.postUrl;
+  });
+  document.addEventListener('keydown', event => {
+    const row = event.target.closest('.post-row[data-post-url]');
+    if (row && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      location.href = row.dataset.postUrl;
+    }
+  });
 })();

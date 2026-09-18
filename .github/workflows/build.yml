@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: read
   pages: write
@@ -27,7 +30,7 @@ jobs:
           mkdir -p dist
           zip -r dist/record-dev-tistory-skin.zip skin.html style.css index.xml images
       - name: Upload skin artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: record-dev-tistory-skin
           path: dist/record-dev-tistory-skin.zip
