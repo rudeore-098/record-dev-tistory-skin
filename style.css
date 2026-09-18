@@ -170,7 +170,8 @@ kbd{border-radius:8px}
 /* Optional post thumbnails and comfortable editor images. */
 .post-thumb{display:block;width:148px;aspect-ratio:16/10;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
 .post-thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .22s ease}
-.post-row:has(.post-thumb),#tt-body-index .post-row:has(.post-thumb){grid-template-columns:84px minmax(0,1fr) 148px;align-items:center}
+.post-row:has(.post-thumb){grid-template-columns:84px minmax(0,1fr) 148px;align-items:center}
+#tt-body-index .post-row:has(.post-thumb){grid-template-columns:58px minmax(0,1fr) 148px;align-items:center}
 .post-row:hover .post-thumb img,.post-row:focus-within .post-thumb img{transform:scale(1.035)}
 .article-body figure.imageblock,.article-body figure.imagegridblock,.article-body figure.imageslideblock{max-width:100%;margin:34px auto}
 .article-body img{display:block;max-width:100%;height:auto;margin-left:auto;margin-right:auto;border-radius:12px}
@@ -180,17 +181,42 @@ kbd{border-radius:8px}
 .has-entry .layout{grid-template-columns:minmax(0,860px) 260px;gap:22px;max-width:1180px;padding:0 28px}
 .reading-rail{padding-top:45px}
 .toc{padding-left:2px}
-@media(max-width:1000px){.has-entry .layout{grid-template-columns:minmax(0,1fr) 220px;gap:18px;padding:0 22px}.post-row:has(.post-thumb),#tt-body-index .post-row:has(.post-thumb){grid-template-columns:72px minmax(0,1fr) 128px}.post-thumb{width:128px}}
-@media(max-width:760px){.post-row:has(.post-thumb),#tt-body-index .post-row:has(.post-thumb){grid-template-columns:minmax(0,1fr) 92px}.post-row:has(.post-thumb) time{grid-column:1}.post-row:has(.post-thumb) .post-copy{grid-column:1;grid-row:2}.post-row:has(.post-thumb) .post-thumb{grid-column:2;grid-row:1/3;width:92px;align-self:center}.reading-rail{padding-top:22px}.article-body figure.imageblock,.article-body figure.imagegridblock,.article-body figure.imageslideblock{margin:26px auto}}
+@media(max-width:1000px){.has-entry .layout{grid-template-columns:minmax(0,1fr) 220px;gap:18px;padding:0 22px}.post-row:has(.post-thumb){grid-template-columns:72px minmax(0,1fr) 128px}#tt-body-index .post-row:has(.post-thumb){grid-template-columns:58px minmax(0,1fr) 128px}.post-thumb{width:128px}}
+@media(max-width:760px){
+  .post-row:has(.post-thumb){grid-template-columns:minmax(0,1fr) 92px}
+  .post-row:has(.post-thumb) time{grid-column:1;grid-row:1}
+  .post-row:has(.post-thumb) .post-copy{grid-column:1;grid-row:2;min-width:0}
+  .post-row:has(.post-thumb) .post-thumb{grid-column:2;grid-row:1/3;width:92px;align-self:center}
+  #tt-body-index .post-row:has(.post-thumb){grid-template-columns:43px minmax(0,1fr) 92px;gap:15px}
+  #tt-body-index .post-row:has(.post-thumb) time{grid-column:1;grid-row:1}
+  #tt-body-index .post-row:has(.post-thumb) .post-copy{grid-column:2;grid-row:1/3;min-width:0}
+  #tt-body-index .post-row:has(.post-thumb) .post-thumb{grid-column:3;grid-row:1/3;width:92px;align-self:center}
+  .reading-rail{padding-top:22px}
+  .article-body figure.imageblock,.article-body figure.imagegridblock,.article-body figure.imageslideblock{margin:26px auto}
+}
+
+@media(max-width:600px){
+  .topbar{min-width:0}
+  .topbar .brand{max-width:120px}
+  .topbar .top-nav{display:none}
+  .topbar .preview-link{display:none}
+  #tt-body-index .post-row:has(.post-thumb){grid-template-columns:34px minmax(0,1fr);gap:12px}
+  #tt-body-index .post-row:has(.post-thumb) time{grid-column:1;grid-row:1}
+  #tt-body-index .post-row:has(.post-thumb) .post-copy{grid-column:2;grid-row:1;min-width:0}
+  #tt-body-index .post-row:has(.post-thumb) .post-thumb{grid-column:2;grid-row:2;width:min(160px,100%);justify-self:start;margin-top:4px}
+  #tt-body-index .post-row:before{left:52px}
+  #tt-body-index .post-row:after{left:49px}
+  #tt-body-index .post-link{overflow-wrap:anywhere;word-break:keep-all}
+}
 
 /* Use the full desktop width so the right rail reaches the viewport edge. */
 @media(min-width:1101px){
   #tt-body-index .layout{width:100%;max-width:none;margin:0;grid-template-columns:264px minmax(0,1fr) 300px;padding:0}
   #tt-body-index .home-intro{padding-left:54px;padding-right:28px}
   #tt-body-index .rail{padding-left:30px;padding-right:28px}
-  .has-entry .layout{width:100%;max-width:none;margin:0;grid-template-columns:minmax(0,860px) minmax(280px,1fr);gap:22px;padding:0}
-  .has-entry #main{width:min(100%,860px);justify-self:end}
-  .has-entry .reading-rail{width:100%;padding-right:32px}
+  body.has-entry:not(#tt-body-index) .layout{width:100%;max-width:none;margin:0;grid-template-columns:minmax(32px,1fr) minmax(0,860px) 300px;gap:22px;padding:0}
+  body.has-entry:not(#tt-body-index) #main{grid-column:2;width:100%;justify-self:stretch}
+  body.has-entry:not(#tt-body-index) .reading-rail{grid-column:3;width:100%;padding-right:32px}
 }
 
 /* Quiet Korean typography for series and small home statistics. */
